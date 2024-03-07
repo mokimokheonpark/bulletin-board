@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { connectDB } from "@/util/database";
 
 export default async function List() {
@@ -10,7 +11,9 @@ export default async function List() {
       {postData.map((item, index) => {
         return (
           <div className="list-item" key={index}>
-            <h4>{item.title}</h4>
+            <Link href={`/detail/${item._id}`} prefetch={false}>
+              <h4>{item.title}</h4>
+            </Link>
             <p>{item.content}</p>
           </div>
         );
