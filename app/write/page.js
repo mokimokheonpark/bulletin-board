@@ -1,4 +1,4 @@
-export default async function Write() {
+export default function Write() {
   return (
     <div className="p-20">
       <form action="/api/write" method="POST">
