@@ -1,8 +1,9 @@
-export default function Write() {
+export default async function Write() {
   return (
-    <div>
-      <h4>Write something here... POST test</h4>
-      <form action="/api/server" method="POST">
+    <div className="p-20">
+      <form action="/api/write" method="POST">
+        <input name="title" placeholder="Title" required />
+        <input name="content" placeholder="Content" required />
         <button type="submit">Post</button>
       </form>
     </div>
