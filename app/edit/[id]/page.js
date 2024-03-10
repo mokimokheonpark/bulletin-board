@@ -11,7 +11,7 @@ export default async function Edit(props) {
   return (
     <div className="p-20">
       <h4>EDIT</h4>
-      <form action="/api/write" method="POST">
+      <form action="/api/edit" method="POST">
         <input
           name="title"
           defaultValue={postDatum.title}
@@ -23,6 +23,11 @@ export default async function Edit(props) {
           defaultValue={postDatum.content}
           placeholder="Content"
           required
+        />
+        <input
+          name="_id"
+          defaultValue={postDatum._id.toString()}
+          style={{ display: "none" }}
         />
         <button type="submit">Edit</button>
       </form>
