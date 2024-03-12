@@ -1,4 +1,4 @@
-export default function Write() {
+export default async function Write() {
   return (
     <div className="p-20">
       <h4>WRITE</h4>
