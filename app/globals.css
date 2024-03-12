@@ -61,6 +61,10 @@ a {
   margin: 5px 0px;
 }
 
+.list-item span {
+  cursor: pointer;
+}
+
 .p-20 {
   padding: 20px;
 }

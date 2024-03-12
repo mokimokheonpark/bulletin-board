@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 
 export default function ListItem(props) {
   return (
@@ -15,6 +15,13 @@ export default function ListItem(props) {
             <Link href={`/edit/${item._id}`}>
               <MdEdit />
             </Link>
+            <span
+              onClick={() => {
+                fetch("/api/delete", { method: "DELETE", body: item._id });
+              }}
+            >
+              <MdDelete />
+            </span>
             <p>{item.content}</p>
           </div>
         );
