@@ -1,27 +1,17 @@
-import Link from "next/link";
-import { MdEdit } from "react-icons/md";
+import ListItem from "./ListItem";
 import { connectDB } from "@/util/database";
 
 export default async function List() {
   const client = await connectDB;
   const db = client.db("Bulletin-Board");
   const postData = await db.collection("post").find().toArray();
+  for (let i = 0; i < postData.length; i++) {
+    postData[i]._id = postData[i]._id.toString();
+  }
 
   return (
     <div className="list-bg">
-      {postData.map((item, index) => {
-        return (
-          <div className="list-item" key={index}>
-            <Link href={`/detail/${item._id}`} prefetch={false}>
-              <h4>{item.title}</h4>
-            </Link>
-            <Link href={`/edit/${item._id}`}>
-              <MdEdit />
-            </Link>
-            <p>{item.content}</p>
-          </div>
-        );
-      })}
+      <ListItem postData={postData} />
     </div>
   );
 }
