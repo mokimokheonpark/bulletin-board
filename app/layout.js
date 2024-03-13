@@ -1,4 +1,7 @@
+import { getServerSession } from "next-auth";
 import Link from "next/link";
+import GitHubLogIn from "./GitHubLogIn";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import "./globals.css";
 
 export const metadata = {
@@ -6,7 +9,9 @@ export const metadata = {
   description: "Bulletin-Board project using create-next-app",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <body>
@@ -16,6 +21,7 @@ export default function RootLayout({ children }) {
           </Link>
           <Link href="/list">List</Link>
           <Link href="/write">Write</Link>
+          <GitHubLogIn />
         </div>
         {children}
       </body>
