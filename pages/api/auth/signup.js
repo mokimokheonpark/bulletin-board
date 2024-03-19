@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       const db = client.db("Bulletin-Board");
       await db.collection("user").insertOne(req.body);
       res.redirect(302, "/");
-    } catch {
+    } catch (error) {
       res.status(500).json(error);
     }
   }

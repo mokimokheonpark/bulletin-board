@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
-import GitHubLogIn from "./GitHubLogIn";
+import LogIn from "./LogIn";
 import LogOut from "./LogOut";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import "./globals.css";
@@ -27,7 +27,7 @@ export default async function RootLayout({ children }) {
               <LogOut />
             </span>
           ) : (
-            <GitHubLogIn />
+            <LogIn />
           )}
         </div>
         {children}
