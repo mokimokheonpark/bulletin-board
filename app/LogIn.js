@@ -4,12 +4,13 @@ import { signIn } from "next-auth/react";
 
 export default function LogIn() {
   return (
-    <button
+    <span
+      className="log-in"
       onClick={() => {
         signIn();
       }}
     >
-      Log In
-    </button>
+      Log-In
+    </span>
   );
 }

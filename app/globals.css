@@ -68,3 +68,11 @@ a {
 .p-20 {
   padding: 20px;
 }
+
+.log-in {
+  cursor: pointer;
+}
+
+.log-out {
+  cursor: pointer;
+}
