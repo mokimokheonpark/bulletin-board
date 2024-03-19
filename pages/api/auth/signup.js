@@ -20,10 +20,16 @@ export default async function handler(req, res) {
     }
     delete req.body.passwordCheck;
     try {
-      const hash = await bcrypt.hash(req.body.password, 10);
-      req.body.password = hash;
       const client = await connectDB;
       const db = client.db("Bulletin-Board");
+      const user = await db
+        .collection("user")
+        .findOne({ email: req.body.email });
+      if (user) {
+        return res.status(500).json("The email already exists");
+      }
+      const hash = await bcrypt.hash(req.body.password, 10);
+      req.body.password = hash;
       await db.collection("user").insertOne(req.body);
       res.redirect(302, "/");
     } catch (error) {
