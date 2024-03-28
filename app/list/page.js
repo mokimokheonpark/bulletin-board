@@ -1,4 +1,4 @@
-import ListItem from "./ListItem";
+import ListItem from "../components/ListItem";
 import { connectDB } from "@/util/database";
 
 export const dynamic = "force-dynamic";

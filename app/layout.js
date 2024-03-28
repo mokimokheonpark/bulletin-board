@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
-import LogIn from "./LogIn";
-import LogOut from "./LogOut";
+import LogIn from "./components/LogIn";
+import LogOut from "./components/LogOut";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import "./globals.css";
 
