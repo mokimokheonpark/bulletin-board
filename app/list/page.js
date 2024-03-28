@@ -13,6 +13,9 @@ export default async function List() {
 
   return (
     <div className="list-bg">
+      <div className="p-20">
+        <h4>LIST</h4>
+      </div>
       <ListItem postData={postData} />
     </div>
   );
