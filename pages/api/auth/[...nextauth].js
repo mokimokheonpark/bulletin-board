@@ -53,9 +53,14 @@ export const authOptions = {
       }
       return token;
     },
+
     session: async ({ session, token }) => {
       session.user = token.user;
       return session;
+    },
+
+    redirect: async ({ url, baseUrl }) => {
+      return baseUrl;
     },
   },
 
