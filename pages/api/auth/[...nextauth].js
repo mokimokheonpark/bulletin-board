@@ -34,8 +34,8 @@ export const authOptions = {
     }),
 
     GithubProvider({
-      clientId: "e4ac3067ff0e41e4c163",
-      clientSecret: "87f7c86c68eac0d0aeaafdb77d7231679c05a062",
+      clientId: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
     }),
   ],
 
@@ -59,7 +59,7 @@ export const authOptions = {
     },
   },
 
-  secret: "moki123moki123",
+  secret: process.env.SECRET,
 };
 
 export default NextAuth(authOptions);
