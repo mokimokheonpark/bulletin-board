@@ -1,16 +1,37 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Comment(props) {
-  const [comment, setComment] = useState("");
+  const [commentData, setCommentData] = useState([]);
+  const [newComment, setNewComment] = useState("");
+
+  useEffect(() => {
+    fetch(`/api/comment/get?id=${props.postDatumId}`)
+      .then((r) => r.json())
+      .then((result) => {
+        setCommentData(result);
+      });
+  }, []);
 
   return (
     <div>
-      <div>Comment List</div>
+      <hr />
+      {commentData.length > 0 ? (
+        commentData.map((item, index) => {
+          return (
+            <p key={index}>
+              {item.commenterUsername}: {item.content}
+            </p>
+          );
+        })
+      ) : (
+        <p>No Comments yet</p>
+      )}
+      <hr />
       <input
         onChange={(e) => {
-          setComment(e.target.value);
+          setNewComment(e.target.value);
         }}
       />
       <button
@@ -19,7 +40,7 @@ export default function Comment(props) {
             method: "POST",
             body: JSON.stringify({
               postDatumId: props.postDatumId,
-              comment: comment,
+              comment: newComment,
             }),
           });
         }}

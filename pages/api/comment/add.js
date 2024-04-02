@@ -16,6 +16,7 @@ export default async function handler(req, res) {
     const newCommentDatum = {
       postDatumId: new ObjectId(req.body.postDatumId),
       content: req.body.comment,
+      commenterUsername: session.user.username,
       commenterEmail: session.user.email,
     };
     try {

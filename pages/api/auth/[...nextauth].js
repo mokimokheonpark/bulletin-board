@@ -48,7 +48,7 @@ export const authOptions = {
     jwt: async ({ token, user }) => {
       if (user) {
         token.user = {};
-        token.user.name = user.name;
+        token.user.username = user.username;
         token.user.email = user.email;
       }
       return token;
