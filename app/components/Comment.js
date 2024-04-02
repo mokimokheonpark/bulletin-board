@@ -8,11 +8,29 @@ export default function Comment(props) {
 
   useEffect(() => {
     fetch(`/api/comment/get?id=${props.postDatumId}`)
-      .then((r) => r.json())
+      .then((response) => response.json())
       .then((result) => {
         setCommentData(result);
       });
   }, []);
+
+  const handleAddComment = () => {
+    fetch("/api/comment/add", {
+      method: "POST",
+      body: JSON.stringify({
+        postDatumId: props.postDatumId,
+        comment: newComment,
+      }),
+    })
+      .then(() => {
+        return fetch(`/api/comment/get?id=${props.postDatumId}`);
+      })
+      .then((response) => response.json())
+      .then((result) => {
+        setCommentData(result);
+        setNewComment("");
+      });
+  };
 
   return (
     <div>
@@ -30,19 +48,14 @@ export default function Comment(props) {
       )}
       <hr />
       <input
+        value={newComment}
         onChange={(e) => {
           setNewComment(e.target.value);
         }}
       />
       <button
         onClick={() => {
-          fetch("/api/comment/add", {
-            method: "POST",
-            body: JSON.stringify({
-              postDatumId: props.postDatumId,
-              comment: newComment,
-            }),
-          });
+          handleAddComment();
         }}
       >
         Add a comment
