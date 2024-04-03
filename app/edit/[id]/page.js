@@ -11,7 +11,7 @@ export default async function Edit(props) {
   return (
     <div className="p-20">
       <h4>EDIT</h4>
-      <form action="/api/edit" method="POST">
+      <form action="/api/post/edit" method="POST">
         <input
           name="title"
           defaultValue={postDatum.title}

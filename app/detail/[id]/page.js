@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
 import { ObjectId } from "mongodb";
-import { connectDB } from "@/util/database";
 import Comment from "@/app/components/Comment";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { connectDB } from "@/util/database";
 
 export default async function Detail(props) {
   const client = await connectDB;

@@ -17,7 +17,7 @@ export default function ListItem(props) {
             </Link>
             <span
               onClick={() => {
-                fetch("/api/delete", { method: "DELETE", body: item._id });
+                fetch("/api/post/delete", { method: "DELETE", body: item._id });
               }}
             >
               <MdDelete />

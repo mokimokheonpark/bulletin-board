@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import LogInBtn from "../components/LogInBtn";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default async function Write() {
   const session = await getServerSession(authOptions);
@@ -15,7 +15,7 @@ export default async function Write() {
       ) : (
         <div>
           <h4>WRITE</h4>
-          <form action="/api/write" method="POST">
+          <form action="/api/post/write" method="POST">
             <input name="title" placeholder="Title" required />
             <input name="content" placeholder="Content" required />
             <button type="submit">Post</button>
