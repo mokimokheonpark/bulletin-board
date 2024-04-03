@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import LogInBtn from "./LogInBtn";
 
 export default function Comment(props) {
   const [commentData, setCommentData] = useState([]);
@@ -47,19 +48,28 @@ export default function Comment(props) {
         <p>No Comments yet</p>
       )}
       <hr />
-      <input
-        value={newComment}
-        onChange={(e) => {
-          setNewComment(e.target.value);
-        }}
-      />
-      <button
-        onClick={() => {
-          handleAddComment();
-        }}
-      >
-        Add a comment
-      </button>
+      {!props.session ? (
+        <div>
+          <h4>To add a comment, please log in first.</h4>
+          <LogInBtn />
+        </div>
+      ) : (
+        <div>
+          <input
+            value={newComment}
+            onChange={(e) => {
+              setNewComment(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              handleAddComment();
+            }}
+          >
+            Add a comment
+          </button>
+        </div>
+      )}
     </div>
   );
 }
