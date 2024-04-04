@@ -30,7 +30,7 @@ export default function UploadImage() {
           }
         }}
       />
-      <img src={src} />
+      <img src={src} style={{ maxWidth: "300px", maxHeight: "300px" }} />
     </div>
   );
 }
