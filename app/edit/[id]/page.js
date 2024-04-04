@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { ObjectId } from "mongodb";
 import { connectDB } from "@/util/database";
 
@@ -7,6 +8,9 @@ export default async function Edit(props) {
   const postDatum = await db
     .collection("post")
     .findOne({ _id: new ObjectId(props.params.id) });
+  if (postDatum === null) {
+    return notFound();
+  }
 
   return (
     <div className="p-20">
