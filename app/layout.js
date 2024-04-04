@@ -21,7 +21,11 @@ export default async function RootLayout({ children }) {
             Bulletin-Board
           </Link>
           <Link href="/list">List</Link>
-          <Link href="/write">Write</Link>
+          {!session ? (
+            <Link href="/message">Write</Link>
+          ) : (
+            <Link href="/write">Write</Link>
+          )}
           {!session ? <Link href="/signup">Sign-Up</Link> : null}
           {!session ? <LogIn /> : <LogOut />}
         </div>
