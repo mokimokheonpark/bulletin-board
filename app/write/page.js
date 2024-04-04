@@ -44,7 +44,7 @@ export default function Write() {
           }}
           disabled={isUploading}
         />
-        <input type="hidden" name="image-url" value={imageUrl} />
+        <input type="hidden" name="imageUrl" value={imageUrl} />
         <button type="submit" disabled={isUploading}>
           Post
         </button>

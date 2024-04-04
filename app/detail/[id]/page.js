@@ -18,8 +18,17 @@ export default async function Detail(props) {
 
   return (
     <div className="p-20">
-      <h4>{postDatum.title}</h4>
+      <h2>{postDatum.title}</h2>
       <p>{postDatum.content}</p>
+      <hr />
+      {postDatum.imageUrl ? (
+        <img
+          src={postDatum.imageUrl}
+          style={{ maxWidth: "600px", maxHeight: "600px" }}
+        />
+      ) : (
+        <p>No Image Yet</p>
+      )}
       <Comment postDatumId={postDatum._id.toString()} session={session} />
     </div>
   );
