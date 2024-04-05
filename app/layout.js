@@ -1,5 +1,7 @@
 import { getServerSession } from "next-auth";
+import { cookies } from "next/headers";
 import Link from "next/link";
+import DarkMode from "./components/DarkMode";
 import LogIn from "./components/LogIn";
 import LogOut from "./components/LogOut";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
@@ -12,10 +14,15 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession(authOptions);
+  const mode = cookies().get("mode");
 
   return (
     <html lang="en">
-      <body>
+      <body
+        className={
+          mode !== undefined && mode.value === "dark" ? "dark-mode" : ""
+        }
+      >
         <div className="navbar">
           <Link href="/" className="logo">
             Bulletin-Board
@@ -28,6 +35,7 @@ export default async function RootLayout({ children }) {
           )}
           {!session ? <Link href="/signup">Sign-Up</Link> : null}
           {!session ? <LogIn /> : <LogOut />}
+          <DarkMode />
         </div>
         {children}
       </body>

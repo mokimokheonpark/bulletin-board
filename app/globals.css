@@ -76,3 +76,19 @@ a {
 .log-out {
   cursor: pointer;
 }
+
+.dark-mode .navbar {
+  background: #222;
+}
+
+.dark-mode .navbar a {
+  color: white;
+}
+
+.dark-mode .navbar span {
+  color: white;
+}
+
+.dark-mode-btn {
+  cursor: pointer;
+}
