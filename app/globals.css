@@ -28,9 +28,11 @@ a {
 }
 
 .navbar a {
-  margin-right: 10px;
-  text-decoration: none;
-  color: black;
+  margin-right: 15px;
+}
+
+.navbar span {
+  margin-right: 15px;
 }
 
 .logo {
