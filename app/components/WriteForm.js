@@ -46,6 +46,11 @@ export default function WriteForm(props) {
         <input type="hidden" name="imageUrl" value={imageUrl} />
         <input
           type="hidden"
+          name="userEmail"
+          value={props.session.user.email}
+        />
+        <input
+          type="hidden"
           name="username"
           value={props.session.user.username}
         />
