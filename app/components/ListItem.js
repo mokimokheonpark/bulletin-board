@@ -25,7 +25,7 @@ export default function ListItem(props) {
             >
               <MdDelete />
             </span>
-            <p>{item.content}</p>
+            <p>{item.username}</p>
           </div>
         );
       })}
