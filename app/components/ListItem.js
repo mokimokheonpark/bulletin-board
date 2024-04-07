@@ -1,12 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { MdDelete, MdEdit } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+import DeletePost from "./DeletePost";
 
 export default function ListItem(props) {
-  const router = useRouter();
-
   return (
     <div>
       {props.postData.map((item, index) => {
@@ -20,17 +16,7 @@ export default function ListItem(props) {
                 <Link href={`/edit/${item._id}`}>
                   <MdEdit />
                 </Link>
-                <span
-                  onClick={() => {
-                    fetch("/api/post/delete", {
-                      method: "DELETE",
-                      body: item._id,
-                    });
-                    router.refresh();
-                  }}
-                >
-                  <MdDelete />
-                </span>
+                <DeletePost postDatumId={item._id} />
               </div>
             ) : null}
             <p>{item.username}</p>
