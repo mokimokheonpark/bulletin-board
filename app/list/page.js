@@ -9,9 +9,6 @@ export default async function List() {
   const client = await connectDB;
   const db = client.db("Bulletin-Board");
   const postData = await db.collection("post").find().toArray();
-  for (let i = 0; i < postData.length; i++) {
-    postData[i]._id = postData[i]._id.toString();
-  }
   const session = await getServerSession(authOptions);
 
   return (

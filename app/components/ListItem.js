@@ -16,7 +16,7 @@ export default function ListItem(props) {
                 <Link href={`/edit/${item._id}`}>
                   <MdEdit />
                 </Link>
-                <DeletePost postDatumId={item._id} />
+                <DeletePost postDatumId={item._id.toString()} />
               </div>
             ) : null}
             <p>{item.username}</p>
