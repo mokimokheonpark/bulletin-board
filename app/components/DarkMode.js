@@ -5,16 +5,21 @@ import { useRouter } from "next/navigation";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 export default function DarkMode() {
+  const [mode, setMode] = useState("");
   useEffect(() => {
     const cookieModeValue = ("; " + document.cookie)
       .split(`; mode=`)
       .pop()
       .split(";")[0];
-    if (cookieModeValue === "") {
-      document.cookie = "mode=light; max-age=" + 60 * 60 * 24 * 365;
+    if (cookieModeValue === "dark") {
+      setMode("dark");
+    } else {
+      setMode("light");
+      if (cookieModeValue === "") {
+        document.cookie = "mode=light; max-age=" + 60 * 60 * 24 * 365;
+      }
     }
   }, []);
-  const [mode, setMode] = useState("light");
   const router = useRouter();
 
   return (
@@ -35,7 +40,11 @@ export default function DarkMode() {
         router.refresh();
       }}
     >
-      {mode === "light" ? <MdDarkMode /> : <MdLightMode />}
+      {mode === "light" ? (
+        <MdDarkMode />
+      ) : mode === "dark" ? (
+        <MdLightMode />
+      ) : null}
     </span>
   );
 }
