@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       const hash = await bcrypt.hash(req.body.password, 10);
       req.body.password = hash;
       await db.collection("user").insertOne(req.body);
-      res.redirect(302, "/");
+      res.redirect(302, "/api/auth/signin");
     } catch (error) {
       res.status(500).json(error);
     }
