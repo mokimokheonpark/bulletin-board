@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       await db
         .collection("post")
         .updateOne({ _id: new ObjectId(req.body._id) }, { $set: updatedData });
-      res.redirect(302, "/list");
+      res.redirect(302, `/detail/${req.body._id}`);
     } catch (error) {
       res.status(500).json(error);
     }
