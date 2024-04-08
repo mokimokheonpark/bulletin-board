@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 export default function LogIn() {
   return (
     <span
-      className="log-in"
+      className="cursor-pointer"
       onClick={() => {
         signIn();
       }}

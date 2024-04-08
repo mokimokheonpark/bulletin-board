@@ -8,6 +8,7 @@ export default function DeletePost(props) {
 
   return (
     <span
+      className="cursor-pointer"
       onClick={() => {
         fetch("/api/post/delete", {
           method: "DELETE",

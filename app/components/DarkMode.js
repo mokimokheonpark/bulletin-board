@@ -19,7 +19,7 @@ export default function DarkMode() {
 
   return (
     <span
-      className="dark-mode-btn"
+      className="cursor-pointer"
       onClick={() => {
         const cookieModeValue = ("; " + document.cookie)
           .split(`; mode=`)

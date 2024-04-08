@@ -63,19 +63,11 @@ a {
   margin: 5px 0px;
 }
 
-.list-item span {
-  cursor: pointer;
-}
-
 .p-20 {
   padding: 20px;
 }
 
-.log-in {
-  cursor: pointer;
-}
-
-.log-out {
+.cursor-pointer {
   cursor: pointer;
 }
 
@@ -89,8 +81,4 @@ a {
 
 .dark-mode .navbar span {
   color: white;
-}
-
-.dark-mode-btn {
-  cursor: pointer;
 }
