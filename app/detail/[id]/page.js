@@ -25,7 +25,7 @@ export default async function Detail(props) {
         {postDatum.title}{" "}
         {session && session.user.email === postDatum.userEmail ? (
           <span>
-            <Link href={`/edit/${postDatum._id}`}>
+            <Link href={`/edit-post/${postDatum._id}`}>
               <MdEdit />
             </Link>
             <DeletePost postDatumId={postDatum._id.toString()} />

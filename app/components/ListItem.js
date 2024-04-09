@@ -14,7 +14,7 @@ export default function ListItem(props) {
               </Link>
               {props.session && props.session.user.email === item.userEmail ? (
                 <div>
-                  <Link href={`/edit/${item._id}`}>
+                  <Link href={`/edit-post/${item._id}`}>
                     <MdEdit />
                   </Link>
                   <DeletePost postDatumId={item._id.toString()} />

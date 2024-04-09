@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
 
-export default async function Edit(props) {
+export default async function EditPost(props) {
   const client = await connectDB;
   const db = client.db("Bulletin-Board");
   const postDatum = await db
