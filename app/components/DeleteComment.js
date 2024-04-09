@@ -18,7 +18,6 @@ export default function DeleteComment(props) {
           body: props.commentDatumId,
         });
         setIsDeleting(false);
-        router.replace(`/detail/${props.postDatumId}`, { scroll: false });
         router.refresh();
       }}
     >

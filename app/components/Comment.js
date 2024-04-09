@@ -9,32 +9,13 @@ import LogInBtn from "./LogInBtn";
 export default function Comment(props) {
   const [commentData, setCommentData] = useState([]);
   const [newComment, setNewComment] = useState("");
-
   useEffect(() => {
     fetch(`/api/comment/get?id=${props.postDatumId}`)
       .then((response) => response.json())
       .then((result) => {
         setCommentData(result);
       });
-  }, []);
-
-  const handleAddComment = () => {
-    fetch("/api/comment/add", {
-      method: "POST",
-      body: JSON.stringify({
-        postDatumId: props.postDatumId,
-        comment: newComment,
-      }),
-    })
-      .then(() => {
-        return fetch(`/api/comment/get?id=${props.postDatumId}`);
-      })
-      .then((response) => response.json())
-      .then((result) => {
-        setCommentData(result);
-        setNewComment("");
-      });
-  };
+  }, [commentData]);
 
   return (
     <div>
@@ -52,10 +33,7 @@ export default function Comment(props) {
                   <Link href={`/edit-comment/${item._id}`}>
                     <MdEdit />
                   </Link>
-                  <DeleteComment
-                    commentDatumId={item._id.toString()}
-                    postDatumId={item.postDatumId.toString()}
-                  />
+                  <DeleteComment commentDatumId={item._id.toString()} />
                 </div>
               ) : null}
             </div>
@@ -79,8 +57,15 @@ export default function Comment(props) {
             }}
           />
           <button
-            onClick={() => {
-              handleAddComment();
+            onClick={async () => {
+              await fetch("/api/comment/add", {
+                method: "POST",
+                body: JSON.stringify({
+                  postDatumId: props.postDatumId,
+                  comment: newComment,
+                }),
+              });
+              setNewComment("");
             }}
           >
             Add a comment
