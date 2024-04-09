@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { MdEdit } from "react-icons/md";
 import LogInBtn from "./LogInBtn";
 
 export default function Comment(props) {
@@ -39,9 +41,21 @@ export default function Comment(props) {
       {commentData.length > 0 ? (
         commentData.map((item, index) => {
           return (
-            <p key={index}>
-              {item.commenterUsername}: {item.content}
-            </p>
+            <div key={index}>
+              <div className="list-item-div">
+                <p>
+                  {item.commenterUsername}: {item.content}
+                </p>
+                {props.session &&
+                props.session.user.email === item.commenterEmail ? (
+                  <div>
+                    <Link href={`/edit-comment/${item._id}`}>
+                      <MdEdit />
+                    </Link>
+                  </div>
+                ) : null}
+              </div>
+            </div>
           );
         })
       ) : (
