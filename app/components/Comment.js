@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MdEdit } from "react-icons/md";
 import DeleteComment from "./DeleteComment";
 import LogInBtn from "./LogInBtn";
@@ -16,6 +17,7 @@ export default function Comment(props) {
         setCommentData(result);
       });
   }, [commentData]);
+  const router = useRouter();
 
   return (
     <div>
@@ -66,6 +68,7 @@ export default function Comment(props) {
                 }),
               });
               setNewComment("");
+              router.refresh();
             }}
           >
             Add a comment
