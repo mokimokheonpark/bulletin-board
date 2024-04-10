@@ -19,7 +19,13 @@ export default async function MyPosts() {
       <div className="p-20">
         <h2>My Posts</h2>
       </div>
-      <ListItem postData={myPostData} session={session} />
+      {myPostData.length > 0 ? (
+        <ListItem postData={myPostData} session={session} />
+      ) : (
+        <div className="p-20">
+          <h2>You have not written any posts yet.</h2>
+        </div>
+      )}
     </div>
   );
 }

@@ -34,7 +34,9 @@ export default async function MyComments() {
           );
         })
       ) : (
-        <h2>You have not added any comments yet.</h2>
+        <div className="p-20">
+          <h2>You have not added any comments yet.</h2>
+        </div>
       )}
     </div>
   );
