@@ -1,4 +1,6 @@
 import { getServerSession } from "next-auth";
+import Link from "next/link";
+import { MdShortcut } from "react-icons/md";
 import LogOutBtn from "../components/LogOutBtn";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
@@ -26,10 +28,17 @@ export default async function Profile() {
         <strong>email</strong>: {session.user.email}
       </p>
       <p>
-        <strong>Total Posts</strong>: {postData.length}
+        <strong>Total Posts</strong>: {postData.length}{" "}
+        <Link href="/my-posts">
+          <MdShortcut />
+        </Link>
       </p>
+
       <p>
-        <strong>Total Comments</strong>: {commentData.length}
+        <strong>Total Comments</strong>: {commentData.length}{" "}
+        <Link href="/my-comments">
+          <MdShortcut />
+        </Link>
       </p>
       <LogOutBtn />
     </div>
