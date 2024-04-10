@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { MdDelete } from "react-icons/md";
 
 export default function DeletePost(props) {
   const [isDeleting, setIsDeleting] = useState(false);
+  const pathname = usePathname();
   const router = useRouter();
 
   return (
@@ -18,7 +19,11 @@ export default function DeletePost(props) {
           body: props.postDatumId,
         });
         setIsDeleting(false);
-        router.replace("/list", { scroll: false });
+        if (pathname === "/list") {
+          router.replace("/list", { scroll: false });
+        } else {
+          router.replace("/my-posts", { scroll: false });
+        }
         router.refresh();
       }}
     >
