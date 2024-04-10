@@ -21,8 +21,10 @@ export default function DeletePost(props) {
         setIsDeleting(false);
         if (pathname === "/list") {
           router.replace("/list", { scroll: false });
-        } else {
+        } else if (pathname === "/my-posts") {
           router.replace("/my-posts", { scroll: false });
+        } else {
+          router.replace("/deleted");
         }
         router.refresh();
       }}
