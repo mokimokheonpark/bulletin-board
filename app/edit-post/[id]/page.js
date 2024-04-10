@@ -24,7 +24,7 @@ export default async function EditPost(props) {
 
   return (
     <div className="p-20">
-      <h4>EDIT</h4>
+      <h2>Edit the post</h2>
       <form action="/api/post/edit" method="POST">
         <input
           name="title"

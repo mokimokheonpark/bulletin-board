@@ -14,7 +14,7 @@ export default async function List() {
   return (
     <div className="list-bg">
       <div className="p-20">
-        <h4>LIST</h4>
+        <h2>Post List</h2>
       </div>
       <ListItem postData={postData} session={session} />
     </div>

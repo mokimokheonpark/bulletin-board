@@ -17,7 +17,7 @@ export default async function MyPosts() {
   return (
     <div className="list-bg">
       <div className="p-20">
-        <h4>My Posts</h4>
+        <h2>My Posts</h2>
       </div>
       <ListItem postData={myPostData} session={session} />
     </div>

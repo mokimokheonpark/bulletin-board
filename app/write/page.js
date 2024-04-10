@@ -7,7 +7,7 @@ export default async function Write() {
 
   return (
     <div className="p-20">
-      <h4>WRITE</h4>
+      <h2>Write a post</h2>
       <WriteForm session={session} />
     </div>
   );

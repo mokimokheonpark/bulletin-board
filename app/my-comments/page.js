@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { connectDB } from "@/util/database";
 import Link from "next/link";
 import { MdShortcut } from "react-icons/md";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { connectDB } from "@/util/database";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +18,7 @@ export default async function MyComments() {
   return (
     <div className="list-bg">
       <div className="p-20">
-        <h4>My Comments</h4>
+        <h2>My Comments</h2>
       </div>
       {myCommentData.length > 0 ? (
         myCommentData.map((item, index) => {

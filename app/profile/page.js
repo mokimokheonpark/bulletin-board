@@ -20,7 +20,7 @@ export default async function Profile() {
 
   return (
     <div className="p-20">
-      <h2>PROFILE</h2>
+      <h2>Profile</h2>
       <p>
         <strong>username</strong>: {session.user.username}
       </p>

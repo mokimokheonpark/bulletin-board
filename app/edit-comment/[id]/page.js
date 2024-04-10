@@ -24,7 +24,7 @@ export default async function EditComment(props) {
 
   return (
     <div className="p-20">
-      <h4>Edit the comment</h4>
+      <h2>Edit the comment</h2>
       <form action="/api/comment/edit" method="POST">
         <input
           name="content"
