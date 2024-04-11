@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 import { ObjectId } from "mongodb";
+import EditForm from "@/app/components/EditForm";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
 
@@ -21,30 +22,12 @@ export default async function EditPost(props) {
       </div>
     );
   }
+  postDatum._id = postDatum._id.toString();
 
   return (
     <div className="p-20">
       <h2>Edit the post</h2>
-      <form action="/api/post/edit" method="POST">
-        <input
-          name="title"
-          defaultValue={postDatum.title}
-          placeholder="Title"
-          required
-        />
-        <input
-          name="content"
-          defaultValue={postDatum.content}
-          placeholder="Content"
-          required
-        />
-        <input
-          name="_id"
-          defaultValue={postDatum._id.toString()}
-          style={{ display: "none" }}
-        />
-        <button type="submit">Edit</button>
-      </form>
+      <EditForm postDatum={postDatum} />
     </div>
   );
 }

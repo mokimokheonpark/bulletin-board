@@ -9,7 +9,11 @@ export default async function handler(req, res) {
     if (req.body.content === "") {
       return res.status(500).json("Content is required.");
     }
-    const updatedData = { title: req.body.title, content: req.body.content };
+    const updatedData = {
+      title: req.body.title,
+      content: req.body.content,
+      imageUrl: req.body.imageUrl,
+    };
     try {
       const client = await connectDB;
       const db = client.db("Bulletin-Board");
