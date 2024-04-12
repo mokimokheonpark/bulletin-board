@@ -42,7 +42,7 @@ export default function Comment(props) {
           );
         })
       ) : (
-        <p>No Comments yet</p>
+        <p>No comments yet</p>
       )}
       <hr />
       {!props.session ? (

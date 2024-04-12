@@ -40,7 +40,7 @@ export default async function Detail(props) {
           style={{ maxWidth: "600px", maxHeight: "600px" }}
         />
       ) : (
-        <p>No Image Yet</p>
+        <p>No image uploaded</p>
       )}
       <Comment postDatumId={postDatum._id.toString()} session={session} />
     </div>

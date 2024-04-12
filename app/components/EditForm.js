@@ -3,7 +3,13 @@
 import { useState } from "react";
 
 export default function EditForm(props) {
-  const [imageUrl, setImageUrl] = useState("");
+  const previousImageState = props.postDatum.imageUrl ? true : false;
+  const previousImageUrl = props.postDatum.imageUrl
+    ? props.postDatum.imageUrl
+    : "";
+  const [doesPreviousImageExist, setDoesPreviousImageExist] =
+    useState(previousImageState);
+  const [currentImageUrl, setCurrentImageUrl] = useState(previousImageUrl);
   const [isUploading, setIsUploading] = useState(false);
 
   return (
@@ -44,16 +50,16 @@ export default function EditForm(props) {
                 body: formData,
               });
               if (postResponse.ok) {
-                setImageUrl(postResponse.url + "/" + fileName);
+                setCurrentImageUrl(postResponse.url + "/" + fileName);
               }
             } else {
-              setImageUrl("");
+              setCurrentImageUrl("");
             }
             setIsUploading(false);
           }}
-          disabled={isUploading}
+          disabled={isUploading || doesPreviousImageExist}
         />
-        <input type="hidden" name="imageUrl" value={imageUrl} />
+        <input type="hidden" name="imageUrl" value={currentImageUrl} />
         <input
           name="_id"
           defaultValue={props.postDatum._id}
@@ -63,15 +69,37 @@ export default function EditForm(props) {
           Edit
         </button>
       </form>
-      {isUploading ? (
-        <p>Uploading the image...</p>
-      ) : (
+      {doesPreviousImageExist ? (
         <div>
-          {imageUrl ? <p>Image Preview</p> : null}
+          <p>Current Image</p>
           <img
-            src={imageUrl}
+            src={props.postDatum.imageUrl}
             style={{ maxWidth: "300px", maxHeight: "300px" }}
           />
+          <div>
+            <button
+              onClick={() => {
+                setDoesPreviousImageExist(false);
+                setCurrentImageUrl("");
+              }}
+            >
+              Remove the current image
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div>
+          {isUploading ? (
+            <p>Uploading the image...</p>
+          ) : (
+            <div>
+              {currentImageUrl ? <p>Image Preview</p> : null}
+              <img
+                src={currentImageUrl}
+                style={{ maxWidth: "300px", maxHeight: "300px" }}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
