@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import LogInBtn from "@/app/components/LogInBtn";
+import SignUpBtn from "@/app/components/SignUpBtn";
 
 export default function Message(props) {
   return (
@@ -16,6 +17,11 @@ export default function Message(props) {
         notFound()
       )}
       <LogInBtn />
+      <div className="mt-60">
+        <hr />
+        <h4>Do you not have an account? Create one now!</h4>
+        <SignUpBtn />
+      </div>
     </div>
   );
 }
