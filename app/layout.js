@@ -29,18 +29,16 @@ export default async function RootLayout({ children }) {
           </Link>
           <Link href="/list">List</Link>
           <Link href="/write">Write</Link>
-          {session ? (
-            <>
-              <Link href="/my-posts">My-Posts</Link>
-              <Link href="/my-comments">My-Comments</Link>
-              <Link href="/profile">Profile</Link>
-              <LogOut />
-            </>
-          ) : (
+          <Link href="/my-posts">My-Posts</Link>
+          <Link href="/my-comments">My-Comments</Link>
+          <Link href="/profile">Profile</Link>
+          {!session ? (
             <>
               <Link href="/signup">Sign-Up</Link>
               <LogIn />
             </>
+          ) : (
+            <LogOut />
           )}
           <DarkMode />
         </div>
