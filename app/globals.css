@@ -22,21 +22,26 @@ a {
   color: black;
 }
 
+.p-20 {
+  padding: 20px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.logo {
+  font-weight: bold;
+}
+
 .navbar {
   background: white;
   padding: 20px;
 }
 
-.navbar a {
-  margin-right: 15px;
-}
-
+.navbar a,
 .navbar span {
   margin-right: 15px;
-}
-
-.logo {
-  font-weight: bold;
 }
 
 .list-bg {
@@ -75,22 +80,23 @@ a {
   margin-right: 20px;
 }
 
-.p-20 {
-  padding: 20px;
+.dark-mode .navbar,
+.dark-mode .p-20,
+.dark-mode .list-item {
+  background: #222;
+  color: white;
 }
 
-.cursor-pointer {
-  cursor: pointer;
+.dark-mode .navbar a,
+.dark-mode .p-20 a,
+.dark-mode .list-item a {
+  color: white;
 }
 
-.dark-mode .navbar {
+.dark-mode .list-bg {
   background: #222;
 }
 
-.dark-mode .navbar a {
-  color: white;
-}
-
-.dark-mode .navbar span {
-  color: white;
+.dark-mode .list-item p {
+  color: lightgrey;
 }

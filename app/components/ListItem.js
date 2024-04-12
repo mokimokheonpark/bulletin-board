@@ -1,10 +1,15 @@
+import { cookies } from "next/headers";
 import Link from "next/link";
 import { MdEdit } from "react-icons/md";
 import DeletePost from "./DeletePost";
 
 export default function ListItem(props) {
+  const mode = cookies().get("mode");
+
   return (
-    <div>
+    <div
+      className={mode !== undefined && mode.value === "dark" ? "dark-mode" : ""}
+    >
       {props.postData.map((item, index) => {
         return (
           <div className="list-item" key={index}>
