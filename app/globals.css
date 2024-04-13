@@ -69,6 +69,7 @@ a {
 .list-item-div {
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .list-item-div h4 {

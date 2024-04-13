@@ -27,7 +27,7 @@ export default function Comment(props) {
           return (
             <div className="list-item-div" key={index}>
               <p>
-                {item.commenterUsername}: {item.content}
+                <strong>{item.commenterUsername}</strong>: {item.content}
               </p>
               {props.session &&
               props.session.user.email === item.commenterEmail ? (

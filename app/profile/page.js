@@ -22,10 +22,10 @@ export default async function Profile() {
     <div className="p-20">
       <h2>Profile</h2>
       <p>
-        <strong>username</strong>: {session.user.username}
+        <strong>Username</strong>: {session.user.username}
       </p>
       <p>
-        <strong>email</strong>: {session.user.email}
+        <strong>Email</strong>: {session.user.email}
       </p>
       <p>
         <strong>Total Posts</strong>: {postData.length}{" "}
