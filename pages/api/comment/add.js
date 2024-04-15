@@ -1,6 +1,4 @@
-import { getServerSession } from "next-auth";
 import { ObjectId } from "mongodb";
-import { authOptions } from "../auth/[...nextauth]";
 import { connectDB } from "@/util/database";
 
 export default async function handler(req, res) {
@@ -9,15 +7,11 @@ export default async function handler(req, res) {
     if (req.body.comment === "") {
       return res.status(500).json("Comment is required.");
     }
-    const session = await getServerSession(req, res, authOptions);
-    if (!session) {
-      return res.status(500).json("Log-In is required.");
-    }
     const newCommentDatum = {
       postDatumId: new ObjectId(req.body.postDatumId),
       content: req.body.comment,
-      commenterUsername: session.user.username,
-      commenterEmail: session.user.email,
+      commenterUsername: req.body.commenterUsername,
+      commenterEmail: req.body.commenterEmail,
     };
     try {
       const client = await connectDB;

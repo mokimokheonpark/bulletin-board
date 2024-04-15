@@ -9,7 +9,7 @@ export default async function Profile() {
   const session = await getServerSession(authOptions);
   const client = await connectDB;
   const db = client.db("Bulletin-Board");
-  const userData = await db
+  const userDatum = await db
     .collection("user")
     .findOne({ email: session.user.email });
   const postData = await db
@@ -25,13 +25,13 @@ export default async function Profile() {
     <div className="p-20">
       <h2>Profile</h2>
       <p>
-        <strong>Username</strong>: {userData.username}{" "}
+        <strong>Username</strong>: {userDatum.username}{" "}
         <Link href={"/edit-username"}>
           <MdEdit />
         </Link>
       </p>
       <p>
-        <strong>Email</strong>: {userData.email}
+        <strong>Email</strong>: {userDatum.email}
       </p>
       <p>
         <strong>Total Posts</strong>: {postData.length}{" "}

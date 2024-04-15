@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function WriteForm(props) {
+export default function WriteForm({ email, username }) {
   const [imageUrl, setImageUrl] = useState("");
   const [isUploading, setIsUploading] = useState(false);
 
@@ -44,16 +44,8 @@ export default function WriteForm(props) {
           disabled={isUploading}
         />
         <input type="hidden" name="imageUrl" value={imageUrl} />
-        <input
-          type="hidden"
-          name="userEmail"
-          value={props.session.user.email}
-        />
-        <input
-          type="hidden"
-          name="username"
-          value={props.session.user.username}
-        />
+        <input type="hidden" name="userEmail" value={email} />
+        <input type="hidden" name="username" value={username} />
         <button type="submit" disabled={isUploading}>
           Post
         </button>

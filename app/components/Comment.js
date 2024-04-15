@@ -65,6 +65,8 @@ export default function Comment(props) {
                 body: JSON.stringify({
                   postDatumId: props.postDatumId,
                   comment: newComment,
+                  commenterUsername: props.commenterUsername,
+                  commenterEmail: props.commenterEmail,
                 }),
               });
               setNewComment("");
