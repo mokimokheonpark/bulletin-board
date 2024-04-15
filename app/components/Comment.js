@@ -8,6 +8,7 @@ import DeleteComment from "./DeleteComment";
 import LogInBtn from "./LogInBtn";
 
 export default function Comment(props) {
+  const [isLoadingCommentData, setIsLoadingCommentData] = useState(true);
   const [commentData, setCommentData] = useState([]);
   const [newComment, setNewComment] = useState("");
   useEffect(() => {
@@ -15,35 +16,43 @@ export default function Comment(props) {
       .then((response) => response.json())
       .then((result) => {
         setCommentData(result);
-      });
+      })
+      .then(setIsLoadingCommentData(false));
   }, [commentData]);
   const router = useRouter();
 
   return (
     <div>
       <hr />
-      {commentData.length > 0 ? (
-        commentData.map((item, index) => {
-          return (
-            <div className="list-item-div" key={index}>
-              <p>
-                <strong>{item.commenterUsername}</strong>: {item.content}
-              </p>
-              {props.session &&
-              props.session.user.email === item.commenterEmail ? (
-                <div>
-                  <Link href={`/edit-comment/${item._id}`}>
-                    <MdEdit />
-                  </Link>
-                  <DeleteComment commentDatumId={item._id.toString()} />
-                </div>
-              ) : null}
-            </div>
-          );
-        })
+      {isLoadingCommentData ? (
+        <p>Loading the comments...</p>
       ) : (
-        <p>No comments yet</p>
+        <div>
+          {commentData.length > 0 ? (
+            commentData.map((item, index) => {
+              return (
+                <div className="list-item-div" key={index}>
+                  <p>
+                    <strong>{item.commenterUsername}</strong>: {item.content}
+                  </p>
+                  {props.session &&
+                  props.session.user.email === item.commenterEmail ? (
+                    <div>
+                      <Link href={`/edit-comment/${item._id}`}>
+                        <MdEdit />
+                      </Link>
+                      <DeleteComment commentDatumId={item._id.toString()} />
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })
+          ) : (
+            <p>No comments yet</p>
+          )}
+        </div>
       )}
+
       <hr />
       {!props.session ? (
         <div>
