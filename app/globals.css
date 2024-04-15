@@ -57,7 +57,7 @@ a {
 }
 
 .list-bg {
-  background: rgb(249, 250, 255);
+  background: rgb(240, 240, 240);
   padding: 10px;
 }
 
@@ -66,7 +66,7 @@ a {
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 5px;
-  box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
+  box-shadow: rgb(200, 200, 200) 0px 2px 4px 0px;
 }
 
 .list-item p {
@@ -93,6 +93,15 @@ a {
   margin-right: 20px;
 }
 
+.my-list-item {
+  background: beige;
+}
+
+.my-comment,
+.my-comment a {
+  color: blue;
+}
+
 .detail-username {
   color: grey;
 }
@@ -104,7 +113,7 @@ a {
 .dark-mode .navbar,
 .dark-mode .p-20,
 .dark-mode .list-item {
-  background: #222;
+  background: rgb(30, 30, 30);
   color: white;
 }
 
@@ -114,11 +123,25 @@ a {
   color: white;
 }
 
-.dark-mode .list-bg {
-  background: #222;
+.dark-mode .list-bg,
+.dark-mode .list-bg .p-20 {
+  background: rgb(60, 60, 60);
+}
+
+.dark-mode .list-item {
+  box-shadow: rgb(120, 120, 120) 0px 2px 4px 0px;
 }
 
 .dark-mode .list-item p,
 .dark-mode .detail-username {
   color: lightgrey;
+}
+
+.dark-mode .my-list-item {
+  background: rgb(90, 90, 90);
+}
+
+.dark-mode .my-comment,
+.dark-mode .my-comment a {
+  color: skyblue;
 }

@@ -31,7 +31,15 @@ export default function Comment(props) {
           {commentData.length > 0 ? (
             commentData.map((item, index) => {
               return (
-                <div className="list-item-div" key={index}>
+                <div
+                  className={
+                    props.session &&
+                    props.session.user.email === item.commenterEmail
+                      ? "list-item-div my-comment"
+                      : "list-item-div"
+                  }
+                  key={index}
+                >
                   <p>
                     <strong>{item.commenterUsername}</strong>: {item.content}
                   </p>

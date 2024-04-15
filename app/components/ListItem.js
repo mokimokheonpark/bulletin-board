@@ -12,7 +12,14 @@ export default function ListItem(props) {
     >
       {props.postData.map((item, index) => {
         return (
-          <div className="list-item" key={index}>
+          <div
+            className={
+              props.session && props.session.user.email === item.userEmail
+                ? "list-item my-list-item"
+                : "list-item"
+            }
+            key={index}
+          >
             <div className="list-item-div">
               <Link href={`/detail/${item._id}`} prefetch={false}>
                 <h4>{item.title}</h4>
