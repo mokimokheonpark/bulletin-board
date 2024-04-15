@@ -21,6 +21,7 @@ export default async function Detail(props) {
 
   return (
     <div className="p-20">
+      <p className="detail-username">{postDatum.username}</p>
       <h2>
         {postDatum.title}{" "}
         {session && session.user.email === postDatum.userEmail ? (
@@ -32,7 +33,7 @@ export default async function Detail(props) {
           </span>
         ) : null}
       </h2>
-      <p>{postDatum.content}</p>
+      <p className="detail-content">{postDatum.content}</p>
       <hr />
       {postDatum.imageUrl ? (
         <img

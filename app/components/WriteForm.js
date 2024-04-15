@@ -10,7 +10,7 @@ export default function WriteForm(props) {
     <div>
       <form action="/api/post/write" method="POST">
         <input name="title" placeholder="Title" required />
-        <input name="content" placeholder="Content" required />
+        <textarea name="content" placeholder="Content" required />
         <input
           type="file"
           accept="image/*"

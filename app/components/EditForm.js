@@ -21,7 +21,7 @@ export default function EditForm(props) {
           placeholder="Title"
           required
         />
-        <input
+        <textarea
           name="content"
           defaultValue={props.postDatum.content}
           placeholder="Content"
