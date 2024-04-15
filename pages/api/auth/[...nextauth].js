@@ -16,20 +16,20 @@ export const authOptions = {
       async authorize(credentials) {
         const client = await connectDB;
         const db = client.db("Bulletin-Board");
-        const user = await db
+        const userDatum = await db
           .collection("user")
           .findOne({ email: credentials.email });
-        if (!user) {
+        if (!userDatum) {
           return null;
         }
         const pwcheck = await bcrypt.compare(
           credentials.password,
-          user.password
+          userDatum.password
         );
         if (!pwcheck) {
           return null;
         }
-        return user;
+        return userDatum;
       },
     }),
 
@@ -48,8 +48,29 @@ export const authOptions = {
     jwt: async ({ token, user }) => {
       if (user) {
         token.user = {};
-        token.user.username = user.username;
-        token.user.email = user.email;
+        if (user.username) {
+          token.user.username = user.username;
+          token.user.email = user.email;
+        } else {
+          const index = user.email.indexOf("@");
+          if (index !== -1) {
+            token.user.username = user.email.slice(0, index);
+          } else {
+            token.user.username = "Unknown";
+          }
+          token.user.email = user.email + " (GitHub)";
+          const client = await connectDB;
+          const db = client.db("Bulletin-Board");
+          const userDatum = await db
+            .collection("user")
+            .findOne({ email: token.user.email });
+          if (!userDatum) {
+            await db.collection("user").insertOne({
+              username: token.user.username,
+              email: token.user.email,
+            });
+          }
+        }
       }
       return token;
     },
