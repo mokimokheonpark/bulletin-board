@@ -7,12 +7,10 @@ Welcome to [Bulletin-Board](http://...), an interactive web application crafted 
 - **Next.js Fullstack**: Seamlessly integrating server-side rendering and client-side interactivity with Next.js.
 - **MongoDB Database**: Efficiently storing and managing data using MongoDB.
 - **JWT Authentication**: Ensuring secure user authentication with JSON Web Tokens via NextAuth.
-- **GitHub Login**: Streamlining access with convenient GitHub authentication.
 - **REST APIs**: Enabling smooth communication between client and server.
 - **User-Centric Rendering**: Leveraging Next.js features for server/client components, dynamic routes, and middleware.
 - **Interactive UI**: Enhancing user experience with dynamic content loading and seamless interactions using AJAX.
 - **AWS S3 Integration**: Enabling seamless image uploading and management with AWS S3.
-- **Dark Mode**: Enhancing user experience with a sleek dark mode option.
 - **AWS Elastic Beanstalk Deployment**: Efficiently deploying the application for seamless access.
 
 ## Deployment
@@ -30,6 +28,7 @@ The application is deployed on AWS Elastic Beanstalk. Explore the application [h
 - **Comment Management**: Manage your comments effortlessly with edit and delete functionalities.
 - **Profile Page**: Keep track of your activity and interactions with a personalized profile page.
 - **User Customization**: Customize your username to reflect your personality and preferences seamlessly.
+- **Dark Mode**: Enhance readability with the sleek and comfortable dark mode option.
 
 ## Contributions
 
