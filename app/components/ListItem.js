@@ -8,7 +8,9 @@ export default function ListItem(props) {
 
   return (
     <div
-      className={mode !== undefined && mode.value === "dark" ? "dark-mode" : ""}
+      className={
+        mode !== undefined && mode.value === "dark" ? "p-20 dark-mode" : "p-20"
+      }
     >
       {props.postData.map((item, index) => {
         return (
