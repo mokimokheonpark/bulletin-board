@@ -5,6 +5,7 @@ import { MdEdit } from "react-icons/md";
 import { ObjectId } from "mongodb";
 import Comment from "@/app/components/Comment";
 import DeletePost from "@/app/components/DeletePost";
+import LikePost from "@/app/components/LikePost";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
 
@@ -30,6 +31,12 @@ export default async function Detail(props) {
       <p className="detail-username">{postDatum.username}</p>
       <h2>
         {postDatum.title}{" "}
+        <LikePost
+          postDatumId={postDatum._id.toString()}
+          postDatumLikeCount={postDatum.likeCount}
+          userDatumEmail={userDatum.email}
+          userDatumLikes={userDatum.likes}
+        />
         {session && session.user.email === postDatum.userEmail ? (
           <span>
             <Link href={`/edit-post/${postDatum._id}`}>

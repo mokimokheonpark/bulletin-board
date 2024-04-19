@@ -19,6 +19,7 @@ export default async function handler(req, res) {
       return res.status(500).json("Password-Check failed");
     }
     delete req.body.passwordCheck;
+    req.body.likes = [];
     try {
       const client = await connectDB;
       const db = client.db("Bulletin-Board");
