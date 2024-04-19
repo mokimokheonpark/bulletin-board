@@ -18,9 +18,12 @@ export default async function Detail(props) {
     return notFound();
   }
   const session = await getServerSession(authOptions);
-  const userDatum = await db
-    .collection("user")
-    .findOne({ email: session.user.email });
+  let userDatum;
+  if (session) {
+    userDatum = await db
+      .collection("user")
+      .findOne({ email: session.user.email });
+  }
 
   return (
     <div className="p-20">
@@ -46,12 +49,16 @@ export default async function Detail(props) {
       ) : (
         <p>No image uploaded</p>
       )}
-      <Comment
-        postDatumId={postDatum._id.toString()}
-        session={session}
-        commenterUsername={userDatum.username}
-        commenterEmail={userDatum.email}
-      />
+      {session ? (
+        <Comment
+          postDatumId={postDatum._id.toString()}
+          session={session}
+          commenterUsername={userDatum.username}
+          commenterEmail={userDatum.email}
+        />
+      ) : (
+        <Comment postDatumId={postDatum._id.toString()} session={session} />
+      )}
     </div>
   );
 }
