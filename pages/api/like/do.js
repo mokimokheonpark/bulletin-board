@@ -8,6 +8,7 @@ export default async function handler(req, res) {
       const db = client.db("Bulletin-Board");
       const updatedLikes = req.body.userDatumLikes;
       updatedLikes.push(req.body.postDatumId);
+      const updatedLikeCount = req.body.postDatumLikeCount + 1;
       await db
         .collection("user")
         .updateOne(
@@ -18,7 +19,7 @@ export default async function handler(req, res) {
         .collection("post")
         .updateOne(
           { _id: new ObjectId(req.body.postDatumId) },
-          { $set: { likeCount: req.body.postDatumUpdatedLikeCount } }
+          { $set: { likeCount: updatedLikeCount } }
         );
       res.status(200).json({ message: "Success!" });
     } catch (error) {

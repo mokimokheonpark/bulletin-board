@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { MdOutlineThumbUp, MdThumbUp } from "react-icons/md";
 
 export default function LikePost(props) {
@@ -9,9 +10,8 @@ export default function LikePost(props) {
     : false;
   const [isLiked, setIsLiked] = useState(likeState);
   const [likeCount, setLikeCount] = useState(props.postDatumLikeCount);
-  const doLike = async () => {
-    setIsLiked(true);
-    setLikeCount((prevLikeCount) => prevLikeCount + 1);
+  const router = useRouter();
+  const handleDoLike = async () => {
     await fetch("/api/like/do", {
       method: "POST",
       headers: {
@@ -21,13 +21,14 @@ export default function LikePost(props) {
         userDatumEmail: props.userDatumEmail,
         userDatumLikes: props.userDatumLikes,
         postDatumId: props.postDatumId,
-        postDatumUpdatedLikeCount: likeCount,
+        postDatumLikeCount: props.postDatumLikeCount,
       }),
     });
+    setIsLiked(true);
+    setLikeCount((prevLikeCount) => prevLikeCount + 1);
+    router.refresh();
   };
-  const undoLike = async () => {
-    setIsLiked(false);
-    setLikeCount((prevLikeCount) => prevLikeCount - 1);
+  const handleUndoLike = async () => {
     await fetch("/api/like/undo", {
       method: "POST",
       headers: {
@@ -37,19 +38,22 @@ export default function LikePost(props) {
         userDatumEmail: props.userDatumEmail,
         userDatumLikes: props.userDatumLikes,
         postDatumId: props.postDatumId,
-        postDatumUpdatedLikeCount: likeCount,
+        postDatumLikeCount: props.postDatumLikeCount,
       }),
     });
+    setIsLiked(false);
+    setLikeCount((prevLikeCount) => prevLikeCount - 1);
+    router.refresh();
   };
 
   return (
     <span>
       {!isLiked ? (
-        <span className="cursor-pointer" onClick={doLike}>
+        <span className="cursor-pointer" onClick={handleDoLike}>
           <MdOutlineThumbUp />
         </span>
       ) : (
-        <span className="cursor-pointer" onClick={undoLike}>
+        <span className="cursor-pointer" onClick={handleUndoLike}>
           <MdThumbUp />
         </span>
       )}
