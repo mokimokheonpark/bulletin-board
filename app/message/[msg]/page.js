@@ -13,6 +13,8 @@ export default function Message(props) {
         <h2>Please log in first to check your comments.</h2>
       ) : props.params.msg === "profile" ? (
         <h2>Please log in first to see your profile.</h2>
+      ) : props.params.msg === "like" ? (
+        <h2>Please log in first to like the post.</h2>
       ) : (
         notFound()
       )}

@@ -5,9 +5,12 @@ import { useRouter } from "next/navigation";
 import { MdOutlineThumbUp, MdThumbUp } from "react-icons/md";
 
 export default function LikePost(props) {
-  const likeState = props.userDatumLikes.includes(props.postDatumId)
-    ? true
-    : false;
+  let likeState;
+  if (props.session) {
+    likeState = props.userDatumLikes.includes(props.postDatumId) ? true : false;
+  } else {
+    likeState = false;
+  }
   const [isLiked, setIsLiked] = useState(likeState);
   const [likeCount, setLikeCount] = useState(props.postDatumLikeCount);
   const router = useRouter();
@@ -48,7 +51,14 @@ export default function LikePost(props) {
 
   return (
     <span>
-      {!isLiked ? (
+      {!props.session ? (
+        <span
+          className="cursor-pointer"
+          onClick={() => router.push("/message/like")}
+        >
+          <MdOutlineThumbUp />
+        </span>
+      ) : !isLiked ? (
         <span className="cursor-pointer" onClick={handleDoLike}>
           <MdOutlineThumbUp />
         </span>

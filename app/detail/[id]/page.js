@@ -31,12 +31,21 @@ export default async function Detail(props) {
       <p className="detail-username">{postDatum.username}</p>
       <h2>
         {postDatum.title}{" "}
-        <LikePost
-          postDatumId={postDatum._id.toString()}
-          postDatumLikeCount={postDatum.likeCount}
-          userDatumEmail={userDatum.email}
-          userDatumLikes={userDatum.likes}
-        />
+        {session ? (
+          <LikePost
+            session={session}
+            postDatumId={postDatum._id.toString()}
+            postDatumLikeCount={postDatum.likeCount}
+            userDatumEmail={userDatum.email}
+            userDatumLikes={userDatum.likes}
+          />
+        ) : (
+          <LikePost
+            session={session}
+            postDatumId={postDatum._id.toString()}
+            postDatumLikeCount={postDatum.likeCount}
+          />
+        )}
         {session && session.user.email === postDatum.userEmail ? (
           <span>
             <Link href={`/edit-post/${postDatum._id}`}>
