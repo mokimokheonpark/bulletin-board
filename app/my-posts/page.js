@@ -13,6 +13,9 @@ export default async function MyPosts() {
     .collection("post")
     .find({ userEmail: session.user.email })
     .toArray();
+  const userDatum = await db
+    .collection("user")
+    .findOne({ email: session.user.email });
 
   return (
     <div className="list-bg">
@@ -20,7 +23,11 @@ export default async function MyPosts() {
         <h2>My Posts</h2>
       </div>
       {myPostData.length > 0 ? (
-        <ListItem postData={myPostData} session={session} />
+        <ListItem
+          session={session}
+          postData={myPostData}
+          userDatum={userDatum}
+        />
       ) : (
         <div className="p-20">
           <h2>You have not written any posts yet.</h2>

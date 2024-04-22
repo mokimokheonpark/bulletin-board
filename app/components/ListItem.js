@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { MdEdit } from "react-icons/md";
 import DeletePost from "./DeletePost";
+import LikePost from "./LikePost";
 
 export default function ListItem(props) {
   const mode = cookies().get("mode");
@@ -26,13 +27,28 @@ export default function ListItem(props) {
               <Link href={`/detail/${item._id}`} prefetch={false}>
                 <h4>{item.title}</h4>
               </Link>
+              {props.session ? (
+                <LikePost
+                  session={props.session}
+                  postDatumId={item._id.toString()}
+                  postDatumLikeCount={item.likeCount}
+                  userDatumEmail={props.userDatum.email}
+                  userDatumLikes={props.userDatum.likes}
+                />
+              ) : (
+                <LikePost
+                  session={props.session}
+                  postDatumId={item._id.toString()}
+                  postDatumLikeCount={item.likeCount}
+                />
+              )}
               {props.session && props.session.user.email === item.userEmail ? (
-                <div>
+                <span className="ml-20">
                   <Link href={`/edit-post/${item._id}`}>
                     <MdEdit />
                   </Link>
                   <DeletePost postDatumId={item._id.toString()} />
-                </div>
+                </span>
               ) : null}
             </div>
             <p>{item.username}</p>

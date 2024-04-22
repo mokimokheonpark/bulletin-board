@@ -30,24 +30,26 @@ export default async function Detail(props) {
     <div className="p-20">
       <p className="detail-username">{postDatum.username}</p>
       <h2>
-        {postDatum.title}{" "}
-        {session ? (
-          <LikePost
-            session={session}
-            postDatumId={postDatum._id.toString()}
-            postDatumLikeCount={postDatum.likeCount}
-            userDatumEmail={userDatum.email}
-            userDatumLikes={userDatum.likes}
-          />
-        ) : (
-          <LikePost
-            session={session}
-            postDatumId={postDatum._id.toString()}
-            postDatumLikeCount={postDatum.likeCount}
-          />
-        )}
+        {postDatum.title}
+        <span className="ml-20">
+          {session ? (
+            <LikePost
+              session={session}
+              postDatumId={postDatum._id.toString()}
+              postDatumLikeCount={postDatum.likeCount}
+              userDatumEmail={userDatum.email}
+              userDatumLikes={userDatum.likes}
+            />
+          ) : (
+            <LikePost
+              session={session}
+              postDatumId={postDatum._id.toString()}
+              postDatumLikeCount={postDatum.likeCount}
+            />
+          )}
+        </span>
         {session && session.user.email === postDatum.userEmail ? (
-          <span>
+          <span className="ml-20">
             <Link href={`/edit-post/${postDatum._id}`}>
               <MdEdit />
             </Link>
