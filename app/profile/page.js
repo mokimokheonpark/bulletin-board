@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { MdEdit, MdShortcut } from "react-icons/md";
+import { ObjectId } from "mongodb";
 import LogOutBtn from "../components/LogOutBtn";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { connectDB } from "@/util/database";
@@ -15,6 +16,15 @@ export default async function Profile() {
   const postData = await db
     .collection("post")
     .find({ userEmail: session.user.email })
+    .toArray();
+  const likesIds = userDatum.likes;
+  const likesObjectIds = [];
+  for (let i = 0; i < likesIds.length; i++) {
+    likesObjectIds.push(new ObjectId(likesIds[i]));
+  }
+  const myLikedPostData = await db
+    .collection("post")
+    .find({ _id: { $in: likesObjectIds } })
     .toArray();
   const commentData = await db
     .collection("comment")
@@ -34,14 +44,19 @@ export default async function Profile() {
         <strong>Email</strong>: {userDatum.email}
       </p>
       <p>
-        <strong>Total Posts</strong>: {postData.length}{" "}
+        <strong>Total posts I have written</strong>: {postData.length}{" "}
         <Link href="/my-posts">
           <MdShortcut />
         </Link>
       </p>
-
       <p>
-        <strong>Total Comments</strong>: {commentData.length}{" "}
+        <strong>Total posts I have liked</strong>: {myLikedPostData.length}{" "}
+        <Link href="/my-likes">
+          <MdShortcut />
+        </Link>
+      </p>
+      <p>
+        <strong>Total comments I have added</strong>: {commentData.length}{" "}
         <Link href="/my-comments">
           <MdShortcut />
         </Link>
