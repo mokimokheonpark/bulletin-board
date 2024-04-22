@@ -30,6 +30,7 @@ export default async function RootLayout({ children }) {
           <Link href="/list">List</Link>
           <Link href="/write">Write</Link>
           <Link href="/my-posts">My-Posts</Link>
+          <Link href="/my-likes">My-Likes</Link>
           <Link href="/my-comments">My-Comments</Link>
           <Link href="/profile">Profile</Link>
           {!session ? (
