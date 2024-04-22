@@ -26,7 +26,7 @@ export default async function MyLikes() {
   return (
     <div className="list-bg">
       <div className="p-20">
-        <h2>My liked posts</h2>
+        <h2>Posts you have liked</h2>
       </div>
       {myLikedPostData.length > 0 ? (
         <ListItem
