@@ -1,22 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MdOutlineThumbUp, MdThumbUp } from "react-icons/md";
 
 export default function LikePost(props) {
-  let likeState;
+  let isLiked;
   if (props.session) {
-    likeState = props.userDatumLikes.includes(props.postDatumId) ? true : false;
+    isLiked = props.userDatumLikes.includes(props.postDatumId) ? true : false;
   } else {
-    likeState = false;
+    isLiked = false;
   }
-  const [isLiked, setIsLiked] = useState(likeState);
-  const [likeCount, setLikeCount] = useState(props.postDatumLikeCount);
-  const [isHandling, setIsHandling] = useState(false);
+  let likeCount = props.postDatumLikeCount;
+  let isHandling = false;
   const router = useRouter();
   const handleDoLike = async () => {
-    setIsHandling(true);
+    isHandling = true;
     await fetch("/api/like/do", {
       method: "POST",
       headers: {
@@ -29,13 +27,13 @@ export default function LikePost(props) {
         postDatumLikeCount: props.postDatumLikeCount,
       }),
     });
-    setIsLiked(true);
-    setLikeCount((prevLikeCount) => prevLikeCount + 1);
-    setIsHandling(false);
+    isLiked = true;
+    likeCount += 1;
+    isHandling = false;
     router.refresh();
   };
   const handleUndoLike = async () => {
-    setIsHandling(true);
+    isHandling = true;
     await fetch("/api/like/undo", {
       method: "POST",
       headers: {
@@ -48,9 +46,9 @@ export default function LikePost(props) {
         postDatumLikeCount: props.postDatumLikeCount,
       }),
     });
-    setIsLiked(false);
-    setLikeCount((prevLikeCount) => prevLikeCount - 1);
-    setIsHandling(false);
+    isLiked = false;
+    likeCount -= 1;
+    isHandling = false;
     router.refresh();
   };
 
