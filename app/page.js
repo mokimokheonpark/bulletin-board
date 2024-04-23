@@ -42,6 +42,10 @@ export default async function Home() {
           effortlessly with edit and delete functionalities.
         </p>
         <p>
+          - <strong>Like Functionality</strong>: Show appreciation for posts by
+          liking them, enhancing interaction and engagement.
+        </p>
+        <p>
           - <strong>Profile Page</strong>: Keep track of your activity and
           interactions with a personalized profile page.
         </p>

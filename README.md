@@ -26,6 +26,7 @@ The application is deployed on AWS Elastic Beanstalk. Explore the application [h
 - **Image Handling**: Easily add, update, or remove images associated with your posts.
 - **Comments Interaction**: Engage in meaningful discussions with other users through the comments section on posts.
 - **Comment Management**: Manage your comments effortlessly with edit and delete functionalities.
+- **Like Functionality**: Show appreciation for posts by liking them, enhancing interaction and engagement.
 - **Profile Page**: Keep track of your activity and interactions with a personalized profile page.
 - **User Customization**: Customize your username to reflect your personality and preferences seamlessly.
 - **Dark Mode**: Enhance readability with the sleek and comfortable dark mode option.

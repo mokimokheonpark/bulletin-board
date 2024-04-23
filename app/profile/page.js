@@ -67,9 +67,6 @@ export default async function Profile() {
       </p>
       <p>
         <strong>Total points I have earned</strong>: {totalPoints}{" "}
-        <Link href="/my-comments">
-          <MdShortcut />
-        </Link>
       </p>
       <LogOutBtn />
       <hr className="mt-60" />
