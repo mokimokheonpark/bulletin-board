@@ -9,10 +9,10 @@ export default function Message(props) {
         <h2>Please log in first to write a post.</h2>
       ) : props.params.msg === "my-posts" ? (
         <h2>Please log in first to check your posts.</h2>
-      ) : props.params.msg === "my-likes" ? (
-        <h2>Please log in first to check posts you have liked.</h2>
       ) : props.params.msg === "my-comments" ? (
         <h2>Please log in first to check your comments.</h2>
+      ) : props.params.msg === "my-likes" ? (
+        <h2>Please log in first to check posts you have liked.</h2>
       ) : props.params.msg === "profile" ? (
         <h2>Please log in first to see your profile.</h2>
       ) : props.params.msg === "like" ? (

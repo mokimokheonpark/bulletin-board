@@ -17,6 +17,10 @@ export default async function Profile() {
     .collection("post")
     .find({ userEmail: session.user.email })
     .toArray();
+  const commentData = await db
+    .collection("comment")
+    .find({ commenterEmail: session.user.email })
+    .toArray();
   const likesIds = userDatum.likes;
   const likesObjectIds = [];
   for (let i = 0; i < likesIds.length; i++) {
@@ -26,10 +30,10 @@ export default async function Profile() {
     .collection("post")
     .find({ _id: { $in: likesObjectIds } })
     .toArray();
-  const commentData = await db
-    .collection("comment")
-    .find({ commenterEmail: session.user.email })
-    .toArray();
+  const totalPosts = postData.length;
+  const totalComments = commentData.length;
+  const totalMyLikedPosts = myLikedPostData.length;
+  const totalPoints = totalPosts * 10 + totalComments * 3 + totalMyLikedPosts;
 
   return (
     <div className="p-20">
@@ -44,24 +48,41 @@ export default async function Profile() {
         <strong>Email</strong>: {userDatum.email}
       </p>
       <p>
-        <strong>Total posts I have written</strong>: {postData.length}{" "}
+        <strong>Total posts I have written</strong>: {totalPosts}{" "}
         <Link href="/my-posts">
           <MdShortcut />
         </Link>
       </p>
       <p>
-        <strong>Total posts I have liked</strong>: {myLikedPostData.length}{" "}
+        <strong>Total comments I have added</strong>: {totalComments}{" "}
+        <Link href="/my-comments">
+          <MdShortcut />
+        </Link>
+      </p>
+      <p>
+        <strong>Total posts I have liked</strong>: {totalMyLikedPosts}{" "}
         <Link href="/my-likes">
           <MdShortcut />
         </Link>
       </p>
       <p>
-        <strong>Total comments I have added</strong>: {commentData.length}{" "}
+        <strong>Total points I have earned</strong>: {totalPoints}{" "}
         <Link href="/my-comments">
           <MdShortcut />
         </Link>
       </p>
       <LogOutBtn />
+      <hr className="mt-60" />
+      <h4>How to earn points?</h4>
+      <p>
+        <strong>- Write a post</strong>: 10 points
+      </p>
+      <p>
+        <strong>- Add a comment</strong>: 3 points
+      </p>
+      <p>
+        <strong>- Like a post</strong>: 1 point
+      </p>
     </div>
   );
 }
