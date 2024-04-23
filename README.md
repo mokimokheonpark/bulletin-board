@@ -1,9 +1,11 @@
 # Bulletin-Board
 
-Welcome to [Bulletin-Board](http://...), an interactive web application crafted for sharing ideas, exchanging information, and expressing feelings, fostering connections among users through posts and comments.
+Welcome to Bulletin-Board, an interactive web application crafted for sharing ideas, exchanging information, and expressing feelings, fostering connections among users through posts and comments.
 
 ## Project Highlights
 
+- **Node.js Backend**: Powering the server-side logic and data handling with Node.js.
+- **React Frontend**: Creating a dynamic and responsive user interface with React.
 - **Next.js Fullstack**: Seamlessly integrating server-side rendering and client-side interactivity with Next.js.
 - **MongoDB Database**: Efficiently storing and managing data using MongoDB.
 - **JWT Authentication**: Ensuring secure user authentication with JSON Web Tokens via NextAuth.
@@ -15,7 +17,7 @@ Welcome to [Bulletin-Board](http://...), an interactive web application crafted 
 
 ## Deployment
 
-The application is deployed on AWS Elastic Beanstalk. Explore the application [here](http://...) to test its features and functionalities.
+The application is deployed on AWS Elastic Beanstalk. Explore the application here to test its features and functionalities.
 
 ## User Experience Features
 
