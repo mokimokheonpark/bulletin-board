@@ -13,8 +13,10 @@ export default function LikePost(props) {
   }
   const [isLiked, setIsLiked] = useState(likeState);
   const [likeCount, setLikeCount] = useState(props.postDatumLikeCount);
+  const [isHandling, setIsHandling] = useState(false);
   const router = useRouter();
   const handleDoLike = async () => {
+    setIsHandling(true);
     await fetch("/api/like/do", {
       method: "POST",
       headers: {
@@ -29,9 +31,11 @@ export default function LikePost(props) {
     });
     setIsLiked(true);
     setLikeCount((prevLikeCount) => prevLikeCount + 1);
+    setIsHandling(false);
     router.refresh();
   };
   const handleUndoLike = async () => {
+    setIsHandling(true);
     await fetch("/api/like/undo", {
       method: "POST",
       headers: {
@@ -46,6 +50,7 @@ export default function LikePost(props) {
     });
     setIsLiked(false);
     setLikeCount((prevLikeCount) => prevLikeCount - 1);
+    setIsHandling(false);
     router.refresh();
   };
 
@@ -59,11 +64,17 @@ export default function LikePost(props) {
           <MdOutlineThumbUp />
         </span>
       ) : !isLiked ? (
-        <span className="cursor-pointer" onClick={handleDoLike}>
+        <span
+          className="cursor-pointer"
+          onClick={isHandling ? null : handleDoLike}
+        >
           <MdOutlineThumbUp />
         </span>
       ) : (
-        <span className="cursor-pointer" onClick={handleUndoLike}>
+        <span
+          className="cursor-pointer"
+          onClick={isHandling ? null : handleUndoLike}
+        >
           <MdThumbUp />
         </span>
       )}
