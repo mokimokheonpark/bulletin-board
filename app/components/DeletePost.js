@@ -21,6 +21,8 @@ export default function DeletePost(props) {
       router.replace("/list", { scroll: false });
     } else if (pathname === "/my-posts") {
       router.replace("/my-posts", { scroll: false });
+    } else if (pathname === "/my-likes") {
+      router.replace("/my-likes", { scroll: false });
     } else {
       router.replace("/deleted");
     }
