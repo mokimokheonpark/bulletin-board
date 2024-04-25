@@ -68,6 +68,7 @@ export const authOptions = {
             await db.collection("user").insertOne({
               username: token.user.username,
               email: token.user.email,
+              likes: [],
             });
           }
         }
