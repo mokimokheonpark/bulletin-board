@@ -1,6 +1,6 @@
 # Bulletin-Board
 
-Welcome to [Bulletin-Board](http://bulletin-board.us-east-2.elasticbeanstalk.com), an interactive web application crafted for sharing ideas, exchanging information, and expressing feelings, fostering connections among users through posts and comments.
+Welcome to Bulletin-Board, an interactive web application crafted for sharing ideas, exchanging information, and expressing feelings, fostering connections among users through posts and comments.
 
 ## Project Highlights
 
@@ -17,7 +17,7 @@ Welcome to [Bulletin-Board](http://bulletin-board.us-east-2.elasticbeanstalk.com
 
 ## Deployment
 
-The application is deployed on AWS Elastic Beanstalk. Explore the application [here](http://bulletin-board.us-east-2.elasticbeanstalk.com) to test its features and functionalities.
+The application was previously deployed on AWS Elastic Beanstalk but has been temporarily discontinued to reduce monthly expenses.
 
 ## User Experience Features
 
